@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <fstream>
 #include <vector>
 #include "EventoConAsistentes.hpp"
 
@@ -98,17 +99,32 @@ int main() {
     evento4.agregarAsistente("Felipe");
     evento4.agregarAsistente("Eric");
     evento4.agregarAsistente("Baity");
-    //AQUI HAY QUE MOSTRAR LA INFO//
-    evento1.mostrarInformacion();
-    evento2.mostrarInformacion();
-    evento3.mostrarInformacion();
-    evento4.mostrarInformacion();
+    //AQUI SE GUARDAN EN UNA LISTA//
     eventos.push_back(&evento1);
     eventos.push_back(&evento2);
     eventos.push_back(&evento3);
     eventos.push_back(&evento4);
+    //AQUI SE MUESTRA LA INFO//
+    for (const auto& evento : eventos) {
+        evento->mostrarInformacion();
+    }
 
+ // GUARDAR EN EL READMI//
+    ofstream archivo("README.md");
+    if (archivo.is_open()) {
+        for (const auto& evento : eventos) {
+            archivo << evento->obtenerInformacion() << endl;
+        }
+        archivo.close();
+        cout << "La información se ha guardado en el archivo README.md" << endl;
+    } else {
+        cerr << "No se pudo abrir el archivo README.md" << endl;
+    }
 
+  // Liberar memoria 
+    for (auto evento : eventos) {
+        delete evento;
+    }   
 
     return 0;
 }

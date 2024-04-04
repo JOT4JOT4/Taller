@@ -17,5 +17,9 @@ public:
         cout << "Evento: " << nombre << " Fecha: " << fecha << " Tipo: " << tipo << endl;
     }
 
+    virtual string obtenerInformacion() const {
+        return "Evento: " + nombre + " Fecha: " + fecha + " Tipo: " + tipo + "\n";
+    }
+
     virtual ~Evento() {}
 };

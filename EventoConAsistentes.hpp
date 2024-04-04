@@ -28,6 +28,15 @@ public:
         }
     }
 
+    string obtenerInformacion() const override {
+        string info = Evento::obtenerInformacion();
+        info += "Asistentes:\n";
+        for (const auto& asistente : *asistentes) {
+            info += "- " + asistente + "\n";
+        }
+        return info;
+    }    
+
     ~EventoConAsistentes() {
         delete asistentes;
     }

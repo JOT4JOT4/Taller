@@ -1,7 +1,9 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include <Evento.hpp>
+#include "Evento.hpp"
+
+using namespace std;
 
 
 
@@ -10,7 +12,7 @@ private:
     vector<string>* asistentes;
 
 public:
-    EventoConAsistentes(const string& _nombre, const string& _fecha) : Evento(_nombre, _fecha) {
+    EventoConAsistentes(const string& _nombre, const string& _fecha, const string& _tipo) : Evento(_nombre, _fecha, _tipo) {
         asistentes = new vector<string>();
     }
 

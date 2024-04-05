@@ -21,5 +21,9 @@ public:
         return "Evento: " + nombre + " Fecha: " + fecha + " Tipo: " + tipo + "\n";
     }
 
+    virtual std::string obtenerNombre() const {
+        return nombre;
+    }
+
     virtual ~Evento() {}
 };

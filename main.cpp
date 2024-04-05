@@ -6,12 +6,20 @@
 
 using namespace std;
 
+bool buscarEvento(const std::vector<Evento*>& eventos, const std::string& nombreEvento) {
+    for (const auto& evento : eventos) {
+        if (evento->obtenerNombre() == nombreEvento) {
+            return true;
+        }
+    }
+    return false;
+}
 
 int main() {
     vector<Evento*> eventos;
     int opcion, rut;
-    string tipo, nombre, fecha, asistente, aux; 
-    /*
+    string tipo, nombreEvento, fecha, asistente, aux; 
+    
     cout << "Que desea visualizar" << endl;
     cout << "Opcion 1: Ingresar Evento" << endl;
     cout << "Opcion 2: Registrar Asistentes a evento" << endl;
@@ -22,52 +30,66 @@ int main() {
 
     switch (opcion)
     {
-    case 1:
+    case 1: {
         cout << "---INGRESAR EVENTO---" << endl;
         cout << "Ingrese un nombre de evento" << endl;
-        cin >> nombre;
+        cin >> nombreEvento;
         cout << "Ingrese la fecha del evento" << endl;
         cin >> fecha;
         cout << "Ingrese el tipo de evento" << endl;
         cin >> tipo;
         
+        if (buscarEvento(eventos, nombreEvento)) {
+        cout << "El evento \"" << nombreEvento << "\" ya existe en la lista." << std::endl;
+        } else {
+        cout << "El evento \"" << nombreEvento << "\" Se puede agregar." << endl;
+        EventoConAsistentes EventoNuevo(nombreEvento, fecha, tipo);
+        eventos.push_back(&EventoNuevo);
+        }
 
         break;
+    }
     
-    case 2:
+    case 2: {
         cout << "---REGISTRO DE ASISTENTES---" << endl;
-        cout << "Ingrese rut de asistente todo junto y sin digito verificador" << endl;
-        cin >> rut;
-        cout << "Nombre del asistente" << endl;
-        cin >> asistente;
+        cout << "Ingrese nombre del asistente" << endl;
 
         break;
-
-    case 3:
+    }
+    case 3: {
+       int aux = 0;
         cout << "---Lista de Asistentes---" << endl;
         cout << "Ingrese el numero del evento que desea consultar" << endl;
         cin >> aux;
 
         int i;
-        for (i=0;i<10;i++)
-        {
-            //BUSQUEDA DEL EVENTO//
+        for (i = 0; i < eventos.size(); i++) {
+            if (i == aux) { // Suponiendo que hay un método getNumero() en la clase Evento
+                // Se encontró el evento
+                cout << "Evento encontrado. Detalles: " << endl;
+                // Aquí puedes imprimir los detalles del evento, según la implementación de tu clase Evento
+                eventos[i]->mostrarInformacion();
+                break;
+            }
         }
+        cout << "Evento no encontrado." << endl;
         break;
-    
-    case 4:
+    }
+    case 4: {
         cout << "-----Generando Informe -----" <<  endl;
         cout << "Lista de eventos programados" << endl;
         
         for (const auto& evento : eventos) {
         evento->mostrarInformacion();
-    }
+        }
 
         break;
-    case 5:
+    }
+    case 5: {
         cout << "Adios, espero haber ayudado" << endl;
         break;
-    default:
+    }
+    default: {
         cout << "Porfavor ingrese un caracter correcto" << endl;
         cout << "Que desea visualizar" << endl;
         cout << "Opcion 1: Ingresar Evento" << endl;
@@ -77,8 +99,11 @@ int main() {
         cout << "Opcion 5: SALIR" << endl;
         cin >> opcion;
         break;
+
+        }
     }
-    */
+
+    
     EventoConAsistentes evento1("Conferencia de Programación", "10/04/2024", "Charla");
     evento1.agregarAsistente("Juan");
     evento1.agregarAsistente("Maria");

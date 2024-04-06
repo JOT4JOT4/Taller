@@ -6,13 +6,22 @@
 
 using namespace std;
 
-bool buscarEvento(const std::vector<Evento*>& eventos, const std::string& nombreEvento) {
+bool buscarEvento(const vector<Evento*>& eventos, const string& nombreEvento) {
     for (const auto& evento : eventos) {
         if (evento->obtenerNombre() == nombreEvento) {
             return true;
         }
     }
     return false;
+}
+
+EventoConAsistentes buscarEventoPos(const vector<Evento*>& eventos, const string& nombreEvento) {
+    for (size_t i = 0; i < eventos.size(); ++i) {
+        if (eventos[i]->obtenerNombre() == nombreEvento) {
+            return (const EventoConAsistentes &) eventos[i];
+        }
+    }; // Si no se encuentra el evento, se retorna -1
+
 }
 
 int main() {
@@ -51,8 +60,15 @@ int main() {
     }
     
     case 2: {
+        string nombre = "";
         cout << "---REGISTRO DE ASISTENTES---" << endl;
         cout << "Ingrese nombre del asistente" << endl;
+        cin >> nombre;
+        cout << "Ingrese nombre del evento" << endl;
+        cin >> nombreEvento;
+        EventoConAsistentes e = buscarEventoPos(eventos, nombreEvento) ;
+
+        e.agregarAsistente(nombre);
 
         break;
     }

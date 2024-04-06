@@ -130,25 +130,10 @@ int main() {
     evento2.agregarAsistente("Jessey");
     evento2.agregarAsistente("Walter");
     evento2.agregarAsistente("Mike");
-    EventoConAsistentes evento3("Karmaland", "07/08/2019", "Evento social");
-    evento3.agregarAsistente("Samuel");
-    evento3.agregarAsistente("Guillermo");
-    evento3.agregarAsistente("Ruben");
-    evento3.agregarAsistente("Juan");
-    EventoConAsistentes evento4("Salida de Silksong", "30/02/2030", "Dia santo");
-    evento4.agregarAsistente("Alex");
-    evento4.agregarAsistente("Felipe");
-    evento4.agregarAsistente("Eric");
-    evento4.agregarAsistente("Baity");
+
     //AQUI SE GUARDAN EN UNA LISTA//
     eventos.push_back(&evento1);
     eventos.push_back(&evento2);
-    eventos.push_back(&evento3);
-    eventos.push_back(&evento4);
-    //AQUI SE MUESTRA LA INFO//
-    for (const auto& evento : eventos) {
-        evento->mostrarInformacion();
-    }
 
  // GUARDAR EN EL READMI//
     ofstream archivo("README.md");

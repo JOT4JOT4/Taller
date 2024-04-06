@@ -1,4 +1,4 @@
-Cristobal Luna /
+Cristobal Luna / 21.006.280-7
 Juan Vargas / 20428612-4
 
 Evento: Conferencia de Programación Fecha: 10/04/2024 Tipo: Charla

@@ -1,3 +1,6 @@
+//Cristobal Luna / 21.006.280-7 
+//Juan Vargas / 20428612-4
+
 #include <iostream>
 #include <string>
 #include <fstream>
